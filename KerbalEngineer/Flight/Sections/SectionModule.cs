@@ -345,7 +345,10 @@ namespace KerbalEngineer.Flight.Sections {
             if (this.numberOfReadouts != this.ReadoutModules.Count) {
                 this.numberOfReadouts = this.ReadoutModules.Count;
                 if (!this.IsFloating) {
-                    DisplayStack.Instance.RequestResize();
+                    // DisplayStack only exists in flight.
+                    if (DisplayStack.Instance != null) {
+                        DisplayStack.Instance.RequestResize();
+                    }
                 } else {
                     this.Window.RequestResize();
                 }
